@@ -1,0 +1,263 @@
+// WIPInventory.cpp : implementation file
+//
+
+#include "stdafx.h"
+#include "Tavern.h"
+#include "WIPInventory.h"
+#include "SplashWnd.h"
+
+#define VK_OEM_3 0x23
+#define VK_LBRACE 219
+#define VK_RBRACE 221
+#define VK_ENTER 13
+
+
+
+// WIPInventory dialog
+
+IMPLEMENT_DYNAMIC(WIPInventory, CDialog)
+
+WIPInventory::WIPInventory(CWnd* pParent /*=NULL*/)
+	: CDialog(WIPInventory::IDD, pParent)
+{
+
+}
+
+WIPInventory::~WIPInventory()
+{
+}
+
+void WIPInventory::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_CHECK1, m_prevscan);
+	DDX_Control(pDX, IDC_BUTTON1, m_saveclose);
+}
+
+
+BEGIN_MESSAGE_MAP(WIPInventory, CDialog)
+	ON_WM_ERASEBKGND()
+	ON_MESSAGE(WM_HOTKEY,OnHotKey)
+//	ON_MESSAGE(WM_DESTROY,OnOK)
+	ON_BN_CLICKED(IDC_BUTTON1, &WIPInventory::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_CHECK1, &WIPInventory::OnBnClickedCheck1)
+END_MESSAGE_MAP()
+
+
+BOOL WIPInventory::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+	savewipcount = 2;
+	//Set dialog to full screen
+	int cx, cy;
+	HDC dc = ::GetDC(NULL);
+	cx = GetDeviceCaps(dc,HORZRES) +
+		GetSystemMetrics(SM_CXBORDER);
+	cy = GetDeviceCaps(dc,VERTRES) + 
+		GetSystemMetrics(SM_CYBORDER);
+	::ReleaseDC(0,dc);
+
+	::SetWindowPos(m_hWnd, HWND_TOPMOST,
+		-(GetSystemMetrics(SM_CXBORDER)+1),
+		-(GetSystemMetrics(SM_CYBORDER)+1),
+		cx+1,cy+1,SWP_NOZORDER);
+
+	if (theApp.employeeid.GetLength() < 1)
+		theApp.employeeid = "0000";
+	
+	SetDlgItemText(IDC_EDIT5,theApp.employeeid);
+	SetDlgItemText(IDC_EDIT6,theApp.wipdepartment);
+	m_prevscan.SetCheck(BST_UNCHECKED);
+	m_saveclose.SetWindowTextW(L"Save/Close(3)");
+
+
+if(RegisterHotKey(this->m_hWnd,100,NULL,VK_LBRACE) && 
+   RegisterHotKey(this->m_hWnd,101,NULL,VK_MULTIPLY) && //asterisk key to begin
+	RegisterHotKey(this->m_hWnd,200,NULL,VK_RBRACE) && 
+	RegisterHotKey(this->m_hWnd,201,NULL,VK_RETURN))
+	//RegisterHotKey(this->m_hWnd,300,NULL,VK_MULTIPLY))  //curse me for doing this; manual entry MUST begin with an asterisk...
+	
+	      {   
+       //   m_start.EnableWindow(false);
+       //   m_stop.EnableWindow(true);
+		  //MessageBox((LPCTSTR)"WORKED","WORKED",0);
+		//MessageBox(NULL, L"Worked!", NULL);
+		 // MessageBox(NULL,L"RegisterHotKey Succeed",NULL);
+	}
+	else 
+     MessageBox(NULL, L"RegisterHotKey failed",NULL);
+
+
+
+	return TRUE;  // return TRUE  unless you set the focus to a control
+}
+
+// WIPInventory message handlers
+
+#if defined(_DEVICE_RESOLUTION_AWARE) && !defined(WIN32_PLATFORM_WFSP)
+void WIPInventory::OnSize(UINT /*nType*/, int /*cx*/, int /*cy*/)
+{
+	if (AfxIsDRAEnabled())
+	{
+		DRA::RelayoutDialog(
+			AfxGetResourceHandle(), 
+			this->m_hWnd, 
+			DRA::GetDisplayMode() != DRA::Portrait ? 
+			MAKEINTRESOURCE(IDD_TAVERN_DIALOG_WIDE) : 
+			MAKEINTRESOURCE(IDD_TAVERN_DIALOG));
+	}
+}
+#endif
+
+
+
+
+
+BOOL WIPInventory::OnEraseBkgnd(CDC* pDC) {
+	BOOL bRet = CDialog::OnEraseBkgnd(pDC);
+    // let the things happen after this call else it will erase everything
+
+	CBitmap bitmap;
+    // loading the bitmap
+    bitmap.LoadBitmap(IDB_BITMAP7);
+    // get the bitmap size
+    BITMAP bmp;
+    bitmap.GetBitmap(&bmp);
+ 
+    // create memory DC
+    CDC memDc;
+    memDc.CreateCompatibleDC(pDC);
+    memDc.SelectObject(&bitmap);
+ 
+    // drawing into the dialog
+    pDC->BitBlt(0,0,bmp.bmWidth,bmp.bmHeight,&memDc,0,0,SRCCOPY);
+return bRet;
+}
+
+
+
+
+
+LRESULT WIPInventory::OnHotKey(WPARAM wParam, LPARAM lParam) {
+	CEdit* firstjob = (CEdit*)GetDlgItem(IDC_EDIT1);
+	CString firsttmp;
+	CString nexttmp;
+CString s;
+						SYSTEMTIME LocalSystemTime;
+	switch(wParam) {
+	/*	case 300: // '0' key (for manual entry)
+			if (this->savewipcount != 2)
+					savewipcount = 2;
+					firstjob->SetFocus();
+					return true;*/
+
+		case 100: // Left Bracket [
+		case 101:
+			if (this->savewipcount != 2)
+				savewipcount = 2;
+
+
+			if(GetDlgItemText(IDC_EDIT1,this->prevjobnum))
+					SetDlgItemText(IDC_EDIT1,NULL);
+
+			firstjob->SetFocus();
+			return true;
+
+		case 200: // Right Bracket ]
+		case 201: //Enter Key
+			GetDlgItemText(IDC_EDIT1,firsttmp);
+
+			if (firsttmp.GetLength() > 7)
+				PLAY_EXCLAMATION
+			
+		for (size_t i=0; i<theApp.jdlg.jobdb.size(); ++i)
+			{
+			if (theApp.jdlg.jobdb[i][0] == s)
+				{
+				SetDlgItemText(IDC_EDIT7,theApp.jdlg.jobdb[i][5]);
+				} //job match
+		}//for job
+
+			for (size_t i=0; i<this->wipdb.size(); ++i)
+				{
+					if (wipdb[i][WIP_JOB].CompareNoCase(firsttmp) == 0) //&& wipdb[i][WIP_DEPT] == theApp.wipdepartment)
+					{
+						GetLocalTime(&LocalSystemTime);		
+						wipdb[i][WIP_DEPT] = theApp.wipdepartment; //new department, old job.
+						wipdb[i][WIP_DATE].Format(L"%02d/%02d/%02d", LocalSystemTime.wDay,LocalSystemTime.wMonth,LocalSystemTime.wYear);
+						wipdb[i][WIP_TIME].Format(L"%02d:%02d.%02d",LocalSystemTime.wHour,LocalSystemTime.wMinute,LocalSystemTime.wSecond);
+						if(GetDlgItemText(IDC_EDIT3,nexttmp))
+								SetDlgItemText(IDC_EDIT4,nexttmp);
+						if(GetDlgItemText(IDC_EDIT2,nexttmp))
+							SetDlgItemText(IDC_EDIT3,nexttmp);
+						if(this->prevjobnum)
+							SetDlgItemText(IDC_EDIT2,this->prevjobnum);	
+						m_prevscan.SetCheck(BST_CHECKED);
+						m_saveclose.SetWindowTextW(L"Save/Close(3)");
+					
+						return true;
+					}
+				}
+				
+				//if we didn't find it...
+						m_prevscan.SetCheck(BST_UNCHECKED);
+						GetLocalTime(&LocalSystemTime);		
+						vector <CString> b;
+	
+						b.push_back(theApp.employeeid);
+						b.push_back(theApp.wipdepartment);
+						b.push_back(firsttmp);
+						s.Format(L"%02d,%02d,%02d", LocalSystemTime.wDay,LocalSystemTime.wMonth,LocalSystemTime.wYear);
+							b.push_back(s);
+						s.Format(L"%02d:%02d.%02d",LocalSystemTime.wHour,LocalSystemTime.wMinute,LocalSystemTime.wSecond);
+							b.push_back(s);
+		
+						this->wipdb.push_back(b);
+					
+						if(GetDlgItemText(IDC_EDIT3,nexttmp))
+							SetDlgItemText(IDC_EDIT4,nexttmp);
+
+						if(GetDlgItemText(IDC_EDIT2,nexttmp))
+							SetDlgItemText(IDC_EDIT3,nexttmp);
+						if(this->prevjobnum)
+							SetDlgItemText(IDC_EDIT2,this->prevjobnum);
+
+						//and then my brain exploded...
+
+						return true;
+
+	}//switch
+}//onhotkey
+
+void WIPInventory::OnBnClickedButton1()
+{
+	if (savewipcount > 0) {
+		switch(savewipcount) {
+		case 2:
+			m_saveclose.SetWindowTextW(L"Save/Close(2)");
+			break;
+		case 1:
+			m_saveclose.SetWindowTextW(L"Save/Close(1)");
+			break;
+		case 0:
+			m_saveclose.SetWindowTextW(L"Saving...");
+			break;
+		}
+
+	savewipcount--;
+	return;
+	}
+	CSplashWnd::ShowSplashScreen(2000, IDB_BITMAP3);
+	this->writewipdb();
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	//theApp.wdlg.DoModal();
+	
+	CDialog::OnOK();
+}
+
+
+void WIPInventory::OnBnClickedCheck1()
+{
+	// TODO: Add your control notification handler code here
+}

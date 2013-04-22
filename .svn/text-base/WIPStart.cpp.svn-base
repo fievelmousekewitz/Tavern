@@ -1,0 +1,229 @@
+// WIPStart.cpp : implementation file
+//
+
+#include "stdafx.h"
+#include "Tavern.h"
+#include "WIPStart.h"
+#include "WIPReset.h"
+
+#define VK_OEM_3 0x23
+#define VK_LBRACE 219
+#define VK_RBRACE 221
+#define VK_ENTER 13
+#define VK_PLUS 0x2B //OEM PLUS sign
+
+
+// WIPStart dialog
+
+IMPLEMENT_DYNAMIC(WIPStart, CDialog)
+
+WIPStart::WIPStart(CWnd* pParent /*=NULL*/)
+	: CDialog(WIPStart::IDD, pParent)
+{
+
+}
+
+WIPStart::~WIPStart()
+{
+}
+
+void WIPStart::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+}
+
+
+BEGIN_MESSAGE_MAP(WIPStart, CDialog)
+
+	ON_WM_ERASEBKGND()
+	ON_MESSAGE(WM_HOTKEY,OnHotKey)
+	//ON_MESSAGE(WM_DESTROY,OnOK)
+	ON_BN_CLICKED(IDC_BUTTON1, &WIPStart::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &WIPStart::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &WIPStart::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON4, &WIPStart::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_BUTTON5, &WIPStart::OnBnClickedButton5)
+	ON_BN_CLICKED(IDC_BUTTON6, &WIPStart::OnBnClickedButton6)
+	ON_BN_CLICKED(IDC_BUTTON7, &WIPStart::OnBnClickedButton7)
+END_MESSAGE_MAP()
+
+
+
+BOOL WIPStart::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+	//Set dialog to full screen
+	int cx, cy;
+	HDC dc = ::GetDC(NULL);
+	cx = GetDeviceCaps(dc,HORZRES) +
+		GetSystemMetrics(SM_CXBORDER);
+	cy = GetDeviceCaps(dc,VERTRES) + 
+		GetSystemMetrics(SM_CYBORDER);
+	::ReleaseDC(0,dc);
+
+	::SetWindowPos(m_hWnd, HWND_TOPMOST,
+		-(GetSystemMetrics(SM_CXBORDER)+1),
+		-(GetSystemMetrics(SM_CYBORDER)+1),
+		cx+1,cy+1,SWP_NOZORDER);
+
+	
+	if(RegisterHotKey(this->m_hWnd,100,NULL,VK_LBRACE) && 
+	RegisterHotKey(this->m_hWnd,200,NULL,VK_RBRACE))
+      {   
+       //   m_start.EnableWindow(false);
+       //   m_stop.EnableWindow(true);
+		  //MessageBox((LPCTSTR)"WORKED","WORKED",0);
+		//MessageBox(NULL, L"Worked!", NULL);
+		 // MessageBox(NULL,L"RegisterHotKey Succeed",NULL);
+      }
+      else
+     MessageBox(NULL, L"RegisterHotKey failed",NULL);
+
+	SetDlgItemText(IDC_BUTTON1,L"TRIM ("+theApp.wipresetdlg.DeptScanToText(theApp.wipresetdlg.CountDepartmentScans(L"TRIM"))+L')');
+	SetDlgItemText(IDC_BUTTON2,L"LAY UP ("+theApp.wipresetdlg.DeptScanToText(theApp.wipresetdlg.CountDepartmentScans(L"LAY UP"))+L')');
+	SetDlgItemText(IDC_BUTTON3,L"AUTOCLAVE ("+theApp.wipresetdlg.DeptScanToText(theApp.wipresetdlg.CountDepartmentScans(L"AUTOCLAVE"))+L')');
+	SetDlgItemText(IDC_BUTTON4,L"ASSEMBLY ("+theApp.wipresetdlg.DeptScanToText(theApp.wipresetdlg.CountDepartmentScans(L"ASSEMBLY"))+L')');
+	SetDlgItemText(IDC_BUTTON5,L"FINISH ("+theApp.wipresetdlg.DeptScanToText(theApp.wipresetdlg.CountDepartmentScans(L"FINISH"))+L')');
+	SetDlgItemText(IDC_BUTTON6,L"SHIPPING ("+theApp.wipresetdlg.DeptScanToText(theApp.wipresetdlg.CountDepartmentScans(L"SHIPPING"))+L')');
+		
+	theApp.employeeid = theApp.defaultid;
+	SetDlgItemText(IDC_EDIT1,theApp.employeeid);
+
+	(CEdit*)GetDlgItem(IDC_EDIT1)->SetFocus();
+
+	return TRUE;  // return TRUE  unless you set the focus to a control
+}
+
+
+#if defined(_DEVICE_RESOLUTION_AWARE) && !defined(WIN32_PLATFORM_WFSP)
+void WIPStart::OnSize(UINT /*nType*/, int /*cx*/, int /*cy*/)
+{
+	if (AfxIsDRAEnabled())
+	{
+		DRA::RelayoutDialog(
+			AfxGetResourceHandle(), 
+			this->m_hWnd, 
+			DRA::GetDisplayMode() != DRA::Portrait ? 
+			MAKEINTRESOURCE(IDD_TAVERN_DIALOG_WIDE) : 
+			MAKEINTRESOURCE(IDD_TAVERN_DIALOG));
+	}
+}
+#endif
+
+
+BOOL WIPStart::OnEraseBkgnd(CDC* pDC) {
+	BOOL bRet = CDialog::OnEraseBkgnd(pDC);
+    // let the things happen after this call else it will erase everything
+
+	CBitmap bitmap;
+    // loading the bitmap
+    bitmap.LoadBitmap(IDB_BITMAP7);
+    // get the bitmap size
+    BITMAP bmp;
+    bitmap.GetBitmap(&bmp);
+ 
+    // create memory DC
+    CDC memDc;
+    memDc.CreateCompatibleDC(pDC);
+    memDc.SelectObject(&bitmap);
+ 
+    // drawing into the dialog
+    pDC->BitBlt(0,0,bmp.bmWidth,bmp.bmHeight,&memDc,0,0,SRCCOPY);
+return bRet;
+}
+
+
+// WIPStart message handlers
+
+
+
+
+
+LRESULT WIPStart::OnHotKey(WPARAM wParam, LPARAM lParam) {
+	CEdit* edit = (CEdit*)GetDlgItem(IDC_EDIT1);
+		
+	switch(wParam) {
+		
+		case 100: // Left Bracket [
+			SetDlgItemText(IDC_EDIT1,NULL);
+			edit->SetFocus();
+			return true;
+
+		case 200: // Right Bracket ]
+			GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+				return true;
+		}
+	return true;
+}
+
+void WIPStart::OnBnClickedButton1() //TRIM
+{
+	theApp.wipdepartment = L"TRIM";
+	GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+	theApp.defaultid = theApp.employeeid;
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	theApp.wipresetdlg.DoModal();
+	CDialog::OnOK();
+}
+
+void WIPStart::OnBnClickedButton2() //LAYUP
+{
+	theApp.wipdepartment = L"LAY UP";
+	GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+	theApp.defaultid = theApp.employeeid;
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	theApp.wipresetdlg.DoModal();
+	CDialog::OnOK();
+}
+
+void WIPStart::OnBnClickedButton3() //AUTOCLAVE
+{
+	theApp.wipdepartment = L"AUTOCLAVE";
+	GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+	theApp.defaultid = theApp.employeeid;
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	theApp.wipresetdlg.DoModal();
+	CDialog::OnOK();
+}
+
+void WIPStart::OnBnClickedButton4() //ASSEMBLY
+{
+	theApp.wipdepartment = L"ASSEMBLY";
+	GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+	theApp.defaultid = theApp.employeeid;
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	theApp.wipresetdlg.DoModal();
+	CDialog::OnOK();
+}
+
+void WIPStart::OnBnClickedButton5() //FINISH
+{
+	theApp.wipdepartment = L"FINISH";
+	GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+	theApp.defaultid = theApp.employeeid;
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	theApp.wipresetdlg.DoModal();
+	CDialog::OnOK();
+	
+}
+
+void WIPStart::OnBnClickedButton6() //SHIPPING
+{
+	theApp.wipdepartment = L"SHIPPING";
+	GetDlgItemText(IDC_EDIT1,theApp.employeeid);
+	theApp.defaultid = theApp.employeeid;
+	UnregisterHotKey(this->m_hWnd,100);
+	UnregisterHotKey(this->m_hWnd,200);
+	theApp.wipresetdlg.DoModal();
+	CDialog::OnOK();
+}
+
+void WIPStart::OnBnClickedButton7()
+{
+	CDialog::OnOK();
+}

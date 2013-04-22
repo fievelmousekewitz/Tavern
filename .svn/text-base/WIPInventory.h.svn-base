@@ -1,0 +1,204 @@
+#include "Tavern.h"
+#include "atlconv.h"
+#include "afx.h"
+#include <vector>
+#include <iostream>
+#include <sstream>
+#pragma once#include "afxwin.h"
+
+
+#define WIPDBFILENAME L"wipdb.xml"
+//#define XMLFIELD(x,y)	if (xmlstring.CompareNoCase(x) == 0) {theApp.DSettings[(y)] = val;}
+
+
+
+#define WIP_USER 0
+#define WIP_DEPT 1
+#define WIP_JOB 2
+#define WIP_DATE 3
+#define WIP_TIME 4
+
+
+
+// WIPInventory dialog
+
+class WIPInventory : public CDialog
+{
+	DECLARE_DYNAMIC(WIPInventory)
+
+public:
+	WIPInventory(CWnd* pParent = NULL);   // standard constructor
+	virtual ~WIPInventory();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	LRESULT OnHotKey(WPARAM wParam,LPARAM lParam);
+//	LRESULT OnOK(WPARAM wParam,LPARAM lParam); 
+// Dialog Data
+	enum { IDD = IDD_WIPINVENTORY };
+
+	//CStdioFile wipdbfile;
+	CStdioFile wipdbfile;
+	CString s;
+	vector < vector<CString> > wipdb;
+	int savewipcount;
+	vector <CString> v;
+	vector <CString> z;
+
+
+
+
+	CString prevjobnum;
+
+
+
+protected:
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
+	afx_msg void OnSize(UINT /*nType*/, int /*cx*/, int /*cy*/);
+	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedButton1();
+
+
+	void resetdept(CString dept) {}
+
+bool openwipdb() {
+	
+		CString line;
+		CFileException e;
+		TCHAR strError[512] = _T("");
+
+		if (!wipdbfile.Open(WIPDBFILENAME, CStdioFile::modeCreate | CStdioFile::shareDenyWrite |
+			CStdioFile::modeNoTruncate | CFile::typeText, &e)) {
+				e.GetErrorMessage(strError,512);
+				AfxMessageBox(strError);
+				return false;
+		}
+	
+//int index;
+		
+		//NOTE: This assumes a whole lot. any file changes will pooch this code.
+		//To my future self: I'm sorry.
+
+		while( wipdbfile.ReadString( line ) )   
+		{
+
+
+			line.TrimLeft();
+			line.TrimRight();
+			if (line.CompareNoCase(L"<WIP>") == 0) {
+
+				z.clear();
+				
+					wipdbfile.ReadString(line);
+					line.TrimLeft(); line.TrimRight();
+					line.Replace(L"<EmployeeNumber><![CDATA[",NULL);
+					line.Replace(L"]]></EmployeeNumber>",NULL);
+					z.push_back(line);	
+					
+
+					wipdbfile.ReadString(line);
+					line.TrimLeft(); line.TrimRight();
+					line.Replace(L"<Department><![CDATA[",NULL);
+					line.Replace(L"]]></Department>",NULL);
+					z.push_back(line);	
+
+					wipdbfile.ReadString(line);
+					line.TrimLeft(); line.TrimRight();
+					line.Replace(L"<JobNumber><![CDATA[",NULL);
+					line.Replace(L"]]></JobNumber>",NULL);
+					z.push_back(line);	
+
+					wipdbfile.ReadString(line);
+					line.TrimLeft(); line.TrimRight();
+					line.Replace(L"<ScanDate><![CDATA[",NULL);
+					line.Replace(L"]]></ScanDate>",NULL);
+					z.push_back(line);	
+
+					wipdbfile.ReadString(line);
+					line.TrimLeft(); line.TrimRight();
+					line.Replace(L"<ScanTime><![CDATA[",NULL);
+					line.Replace(L"]]></ScanTime>",NULL);
+					z.push_back(line);	
+
+					wipdb.push_back(z);
+					wipdbfile.ReadString(line); // </WIP>	
+				}
+
+
+
+
+/* Old wip code
+			line.TrimRight();
+			z.clear();
+			index = 0;
+			CString field;
+			
+			while (AfxExtractSubString(field,line,index,_T('^')))
+			{
+				z.push_back(field);
+				++index;
+			}
+			wipdb.push_back(z);
+*/
+
+
+
+		}//readstring
+
+		wipdbfile.Close();
+		return true;
+
+	}//openwipdb
+
+
+
+
+	bool writewipdb() {
+		CString line;
+		CFileException e;
+		TCHAR strError[512] = _T("");
+		if (!wipdbfile.Open(WIPDBFILENAME, CStdioFile::modeCreate | CFile::modeWrite | CFile::typeText, &e)) 
+		{
+				e.GetErrorMessage(strError,512);
+				AfxMessageBox(strError);
+				return false;
+		}
+		wipdbfile.WriteString(L"<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+		wipdbfile.WriteString(L"<WIPINVENTORY>");
+
+		vector < vector<CString> >::iterator it;
+		vector<CString>::iterator its;
+
+		for (it = wipdb.begin(); it != wipdb.end(); it++)
+		{
+			its = (*it).begin();
+			line = L"<WIP>"; wipdbfile.WriteString(line);
+			line = L"<EmployeeNumber><![CDATA["+ *its + L"]]></EmployeeNumber>"; wipdbfile.WriteString(line); its++;
+			line =     L"<Department><![CDATA["+ *its + L"]]></Department>"; wipdbfile.WriteString(line); its++;
+			line =      L"<JobNumber><![CDATA[" + *its + L"]]></JobNumber>"; wipdbfile.WriteString(line); its++;
+			line = L"<ScanDate><![CDATA[" + *its + L"]]></ScanDate>"; wipdbfile.WriteString(line); its++;
+			line = L"<ScanTime><![CDATA[" + *its + L"]]></ScanTime>"; wipdbfile.WriteString(line); its++;
+			line = L"</WIP>"; wipdbfile.WriteString(line);
+
+			/*for(its = (*it).begin(); its < (*it).end(); its++)
+			{
+				
+				line += *its; 
+				if (its < (*it).end() -1) {
+					line += '^';
+				}
+				
+			}*/
+			//wipdbfile.WriteString( line );
+		}
+
+
+	wipdbfile.WriteString(L"</WIPINVENTORY>");
+	wipdbfile.Close();
+	return true;
+	}
+
+	afx_msg void OnBnClickedCheck1();
+	CButton m_prevscan;
+	CButton m_saveclose;
+};

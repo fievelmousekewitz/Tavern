@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern
+END
+stdafx.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern/stdafx.h
+END
+MenuDlg.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/TavernApp/!svn/ver/15/Tavern/trunk/Tavern/MenuDlg.h
+END
+TavBG.jpg
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavBG.jpg
+END
+Inventory.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern/Inventory.h
+END
+WIPReset.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/WIPReset.cpp
+END
+Tavern.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/Tavern.h
+END
+SetupScreen.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/SetupScreen.h
+END
+inventory-maintenanceforwasp.ico
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/inventory-maintenanceforwasp.ico
+END
+SplashWnd.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern/SplashWnd.h
+END
+WIPStart.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/WIPStart.cpp
+END
+TavWIPBG.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavWIPBG.bmp
+END
+Tavern.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/Tavern.vcproj
+END
+WIPInventory.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/WIPInventory.h
+END
+TavCarts.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavCarts.bmp
+END
+Tavernppc.rc
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/Tavernppc.rc
+END
+splash.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/splash.bmp
+END
+nled.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/TavernApp/!svn/ver/21/Tavern/trunk/Tavern/nled.h
+END
+stdafx.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/TavernApp/!svn/ver/4/Tavern/trunk/Tavern/stdafx.cpp
+END
+MenuDlg.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/TavernApp/!svn/ver/21/Tavern/trunk/Tavern/MenuDlg.cpp
+END
+TavernDlg.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern/TavernDlg.h
+END
+Inventory.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/TavernApp/!svn/ver/10/Tavern/trunk/Tavern/Inventory.cpp
+END
+JobComp.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern/JobComp.h
+END
+TavBlank.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavBlank.bmp
+END
+CartControl.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/TavernApp/!svn/ver/3/Tavern/trunk/Tavern/CartControl.h
+END
+resourceppc.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/resourceppc.h
+END
+Tavern.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/Tavern.cpp
+END
+TavBG.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavBG.bmp
+END
+SetupScreen.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/SetupScreen.cpp
+END
+SplashWnd.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/TavernApp/!svn/ver/4/Tavern/trunk/Tavern/SplashWnd.cpp
+END
+WIPReset.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/WIPReset.h
+END
+TavInvBG.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavInvBG.bmp
+END
+WIPInventory.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/WIPInventory.cpp
+END
+TavOrdersBG.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/TavOrdersBG.bmp
+END
+WIPStart.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/TavernApp/!svn/ver/11/Tavern/trunk/Tavern/WIPStart.h
+END
+TavernDlg.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/TavernApp/!svn/ver/7/Tavern/trunk/Tavern/TavernDlg.cpp
+END
+JobComp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/TavernApp/!svn/ver/26/Tavern/trunk/Tavern/JobComp.cpp
+END
+ReadMe.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/TavernApp/!svn/ver/5/Tavern/trunk/Tavern/ReadMe.txt
+END
+CartControl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/TavernApp/!svn/ver/4/Tavern/trunk/Tavern/CartControl.cpp
+END

@@ -1,0 +1,496 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resourceppc.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resourceppc.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\Tavernppc.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "inventory-maintenanceforwasp.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TAVERN_DIALOG DIALOG  0, 0, 240, 320
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_BORDER
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+FONT 10, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_EDIT1,18,17,97,12,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,7,37,124,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Save/Close",IDC_BUTTON1,4,132,40,12
+    EDITTEXT        IDC_EDIT6,28,109,31,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "SFTY",IDC_STATIC,4,112,19,9
+    LTEXT           "MAX",IDC_STATIC,5,97,16,9
+    EDITTEXT        IDC_EDIT5,28,94,31,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT3,28,80,31,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "MIN",IDC_STATIC,4,83,16,9
+    LTEXT           "STOCK",IDC_STATIC,5,57,25,8
+    LTEXT           "QTY TO ORDER",IDC_STATIC,78,110,56,9
+    EDITTEXT        IDC_EDIT8,73,120,30,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT9,106,120,30,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT4,40,53,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,70,53,28,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_TAVERN_DIALOG_WIDE DIALOG  0, 0, 210, 129
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_APPWINDOW | 0x80000000L
+CAPTION "Tavern"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "TODO: Place dialog controls here.",IDC_STATIC_1,57,49,112,23
+END
+
+IDD_OPENMENU DIALOG  0, 0, 264, 263
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Ordering",IDC_BUTTON1,40,17,69,31
+    PUSHBUTTON      "Inventory",IDC_BUTTON2,40,60,69,30
+    PUSHBUTTON      "WIP Inventory",IDC_BUTTON3,14,115,57,28
+    COMBOBOX        IDC_COMBO1,40,90,69,62,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT2,109,90,30,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Carts",IDC_BUTTON4,82,115,60,28
+    PUSHBUTTON      "X",IDC_BUTTON5,0,0,19,17
+    PUSHBUTTON      "...",IDC_BUTTON6,0,22,21,18
+    CONTROL         "SIP1",IDC_SIP1,"SIPPREF",NOT WS_VISIBLE | WS_TABSTOP,125,183,36,14
+END
+
+IDD_INVENTORY DIALOG  0, 0, 416, 349
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_BORDER
+FONT 8, "MS Shell Dlg"
+BEGIN
+    EDITTEXT        IDC_EDIT1,43,33,80,15,ES_AUTOHSCROLL
+    LTEXT           "PartNo:",IDC_STATIC,13,33,24,15,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT3,21,134,43,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,71,134,43,13,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Save/Close",IDC_BUTTON1,6,156,61,14
+    EDITTEXT        IDC_EDIT2,5,65,146,14,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT5,57,94,20,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "IUM:",IDC_STATIC,31,94,21,14,SS_CENTERIMAGE
+    LTEXT           "Count",IDC_STATIC,29,121,25,10
+    LTEXT           "Confirm",IDC_STATIC,79,121,27,10
+    EDITTEXT        IDC_EDIT6,15,78,137,14,ES_AUTOHSCROLL
+END
+
+IDD_JOBCOMP DIALOG  0, 0, 316, 232
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "OK",IDC_BUTTON1,124,152,30,24
+    LTEXT           "Job Number",IDC_STATIC,4,21,42,9
+    EDITTEXT        IDC_EDIT1,55,21,52,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT12,7,36,122,13,ES_AUTOHSCROLL
+    LTEXT           "Trim",IDC_STATIC,13,57,34,8
+    EDITTEXT        IDC_EDIT2,4,67,51,12,ES_AUTOHSCROLL
+    LTEXT           "Layup",IDC_STATIC,74,57,30,9
+    EDITTEXT        IDC_EDIT3,64,67,51,12,ES_AUTOHSCROLL
+    LTEXT           "OSP",IDC_STATIC,21,81,14,8
+    EDITTEXT        IDC_EDIT9,4,91,51,12,ES_AUTOHSCROLL
+    LTEXT           "Autoclave",IDC_STATIC,72,81,33,8
+    EDITTEXT        IDC_EDIT4,65,91,51,12,ES_AUTOHSCROLL
+    LTEXT           "Trim",IDC_STATIC,22,103,14,8
+    LTEXT           "Assembly",IDC_STATIC,74,103,31,8
+    EDITTEXT        IDC_EDIT6,65,111,51,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,4,111,51,12,ES_AUTOHSCROLL
+    LTEXT           "Paint/Prep",IDC_STATIC,13,123,34,8
+    LTEXT           "Shipping",IDC_STATIC,74,123,28,8
+    EDITTEXT        IDC_EDIT8,65,132,51,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,4,132,51,12,ES_AUTOHSCROLL
+    LTEXT           "Ship By",IDC_STATIC,19,153,24,8
+    LTEXT           "Need By",IDC_STATIC,79,153,28,8
+    EDITTEXT        IDC_EDIT11,64,165,51,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT10,10,165,51,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,205,211,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,259,211,50,14
+END
+
+IDD_INVENTORYWC DIALOG  0, 0, 320, 281
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    EDITTEXT        IDC_EDIT1,13,7,114,15,ES_AUTOHSCROLL
+END
+
+IDD_CART DIALOG  0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "CART#",IDC_STATIC,7,16,28,10
+    EDITTEXT        IDC_EDIT1,37,15,60,13,ES_AUTOHSCROLL
+    LTEXT           "PartNo:",IDC_STATIC,7,33,26,9
+    EDITTEXT        IDC_EDIT2,38,32,82,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,7,54,135,13,ES_AUTOHSCROLL
+    LTEXT           "Suggested",IDC_STATIC,15,82,38,9
+    LTEXT           "Added",IDC_STATIC,76,81,24,8
+    EDITTEXT        IDC_EDIT4,14,94,43,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,68,94,40,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,113,94,40,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Save/Close",IDC_BUTTON1,7,132,52,21
+    LTEXT           "Confirm",IDC_STATIC,117,81,30,8
+END
+
+IDD_WIPINVENTORY DIALOG  0, 0, 262, 210
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,205,189,50,14
+    EDITTEXT        IDC_EDIT1,54,61,78,13,ES_AUTOHSCROLL
+    LTEXT           "Job Scanned",IDC_STATIC,7,62,43,10
+    EDITTEXT        IDC_EDIT2,53,94,78,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,53,113,79,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,53,129,78,12,ES_AUTOHSCROLL
+    LTEXT           "Prev.",IDC_STATIC,23,95,19,10
+    LTEXT           "Employee",IDC_STATIC,7,25,35,10
+    LTEXT           "Department",IDC_STATIC,69,25,63,10
+    EDITTEXT        IDC_EDIT5,7,36,47,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,62,36,70,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Save/Close",IDC_BUTTON1,7,145,55,23
+    CONTROL         "PrevScan?",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT,54,74,78,12,WS_EX_DLGMODALFRAME
+END
+
+IDD_WIPSTART DIALOG  0, 0, 270, 275
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Employee #",IDC_STATIC,10,20,48,9
+    EDITTEXT        IDC_EDIT1,70,19,68,13,ES_AUTOHSCROLL
+    LTEXT           "(Scan Your Badge)",IDC_STATIC,70,33,70,10
+    PUSHBUTTON      "Trim",IDC_BUTTON1,10,96,60,33
+    PUSHBUTTON      "Layup",IDC_BUTTON2,10,52,60,34
+    PUSHBUTTON      "Autoclave",IDC_BUTTON3,80,52,60,34
+    PUSHBUTTON      "Assembly",IDC_BUTTON4,80,94,60,35
+    PUSHBUTTON      "Finish",IDC_BUTTON5,10,136,60,34
+    PUSHBUTTON      "Shipping",IDC_BUTTON6,80,136,60,34
+    PUSHBUTTON      "< Back",IDC_BUTTON7,10,31,44,13
+END
+
+IDD_SETUP DIALOG  0, 0, 262, 229
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,155,53,17
+    LTEXT           "Setup",IDC_STATIC,17,20,31,8
+    PUSHBUTTON      "Clear/Backup Inventory",IDC_BUTTON1,7,34,84,23
+    PUSHBUTTON      "Clear/Backup Orders",IDC_BUTTON2,7,64,84,21
+    PUSHBUTTON      "Clear/Backup WIP",IDC_BUTTON3,7,91,84,20
+    PUSHBUTTON      "Clear/Backup Carts",IDC_BUTTON4,7,116,83,20
+    LTEXT           "Default ID",IDC_STATIC,7,139,35,10
+    EDITTEXT        IDC_EDIT1,47,138,39,12,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_VERNUM,53,21,73,8
+END
+
+IDD_WIPRESET DIALOG  0, 0, 162, 173
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg"
+BEGIN
+    PUSHBUTTON      "RESUME",IDC_BUTTON1,7,16,137,52
+    PUSHBUTTON      "NEW ",IDC_BUTTON2,7,78,137,15
+    LTEXT           "Static",IDC_STATIC_DP,17,102,128,8
+    PUSHBUTTON      "< Back",IDC_BUTTON3,55,126,45,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "ACTI"
+            VALUE "FileDescription", "ACTI Barcode Scanner"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "Tavern.exe"
+            VALUE "LegalCopyright", "Copyright ACTI.  All rights reserved."
+            VALUE "OriginalFilename", "Tavern.exe"
+            VALUE "ProductName", "Tavern Barcode Scanner"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_TAVERN_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 233
+        BOTTOMMARGIN, 281
+        HORZGUIDE, 54
+        HORZGUIDE, 81
+        HORZGUIDE, 95
+        HORZGUIDE, 110
+    END
+
+    IDD_TAVERN_DIALOG_WIDE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_OPENMENU, DIALOG
+    BEGIN
+        RIGHTMARGIN, 161
+        VERTGUIDE, 40
+        VERTGUIDE, 109
+        BOTTOMMARGIN, 197
+        HORZGUIDE, 48
+        HORZGUIDE, 60
+        HORZGUIDE, 115
+        HORZGUIDE, 143
+    END
+
+    IDD_INVENTORY, DIALOG
+    BEGIN
+        RIGHTMARGIN, 409
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 342
+        HORZGUIDE, 18
+        HORZGUIDE, 33
+        HORZGUIDE, 78
+        HORZGUIDE, 92
+        HORZGUIDE, 115
+        HORZGUIDE, 131
+    END
+
+    IDD_JOBCOMP, DIALOG
+    BEGIN
+        RIGHTMARGIN, 309
+        VERTGUIDE, 57
+        VERTGUIDE, 66
+        BOTTOMMARGIN, 225
+        HORZGUIDE, 164
+    END
+
+    IDD_INVENTORYWC, DIALOG
+    BEGIN
+        RIGHTMARGIN, 313
+        BOTTOMMARGIN, 274
+    END
+
+    IDD_CART, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+        HORZGUIDE, 100
+    END
+
+    IDD_WIPINVENTORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        VERTGUIDE, 54
+        VERTGUIDE, 62
+        VERTGUIDE, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+        HORZGUIDE, 18
+    END
+
+    IDD_WIPSTART, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 263
+        VERTGUIDE, 10
+        VERTGUIDE, 70
+        VERTGUIDE, 80
+        VERTGUIDE, 140
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 268
+        HORZGUIDE, 52
+        HORZGUIDE, 83
+        HORZGUIDE, 86
+        HORZGUIDE, 129
+        HORZGUIDE, 136
+        HORZGUIDE, 170
+    END
+
+    IDD_SETUP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 222
+    END
+
+    IDD_WIPRESET, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 155
+        VERTGUIDE, 17
+        VERTGUIDE, 90
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 166
+        HORZGUIDE, 110
+        HORZGUIDE, 126
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP2             BITMAP                  "C:\\Users\\jeffj\\Documents\\Tavern\\Tavern\\Tavern\\TavBG.bmp"
+IDB_BITMAP3             BITMAP                  "splash.bmp"
+IDB_BITMAP5             BITMAP                  "TavBlank.bmp"
+IDB_BITMAP1             BITMAP                  "TavOrdersBG.bmp"
+IDB_BITMAP6             BITMAP                  "TavInvBG.bmp"
+IDB_BITMAP7             BITMAP                  "TavWIPBG.bmp"
+IDB_BITMAP8             BITMAP                  "TavCarts.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_OPENMENU DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 8, 0
+0x6547, 0x656e, 0x6172, 0x006c, 
+    IDC_COMBO1, 0x403, 9, 0
+0x6853, 0x7069, 0x6970, 0x676e, "\000" 
+    IDC_COMBO1, 0x403, 6, 0
+0x6853, 0x6d69, 0x0073, 
+    IDC_COMBO1, 0x403, 9, 0
+0x7246, 0x6565, 0x657a, 0x7372, "\000" 
+    IDC_COMBO1, 0x403, 5, 0
+0x6f43, 0x6572, "\000" 
+    IDC_COMBO1, 0x403, 8, 0
+0x6f43, 0x6572, 0x3850, 0x0041, 
+    IDC_COMBO1, 0x403, 12, 0
+0x6f43, 0x736e, 0x6d75, 0x6261, 0x656c, 0x0073, 
+    IDC_COMBO1, 0x403, 8, 0
+0x6143, 0x6962, 0x656e, 0x0074, 
+    IDC_COMBO1, 0x403, 11, 0
+0x7243, 0x6269, 0x616d, 0x7473, 0x7265, "\000" 
+    IDC_COMBO1, 0x403, 8, 0
+0x4841, 0x6150, 0x6e69, 0x0074, 
+    IDC_COMBO1, 0x403, 9, 0
+0x6152, 0x5077, 0x7261, 0x7374, "\000" 
+    IDC_COMBO1, 0x403, 9, 0
+0x6148, 0x6472, 0x6177, 0x6572, "\000" 
+    IDC_COMBO1, 0x403, 13, 0
+0x654d, 0x6174, 0x646c, 0x7465, 0x6961, 0x736c, "\000" 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\Tavernppc.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
